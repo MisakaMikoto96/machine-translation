@@ -133,19 +133,6 @@ def lexical_diversity(text1,text2):
 
 #lexical_diversity(str(tokenlist_en),str(tokenlist_fr))
 
-#2.How many word tokens are in the English data? In the Japanese?#
- #both 10500
-
-#3.How many word types are in the English data? In the Japanese data?
-
-
-#4.How many word tokens will be replaced by _UNK in English? In Japanese?    unknown words
-
-
-#5.Given the observations above, how do you think the NMT system will be affected by differences
-#  in sentence length, type/ token ratios, and unknown word handling?
-#
-#
 
 
 
@@ -159,7 +146,6 @@ xp = cuda.cupy if gpuid >= 0 else np
 #---------------------------------------------------------------------
 # Load dataset
 #---------------------------------------------------------------------
-#把你上次计算得到的数据保存起来
 w2i = pickle.load(open(w2i_path, "rb"))
 i2w = pickle.load(open(i2w_path, "rb"))
 vocab = pickle.load(open(vocab_path, "rb"))
@@ -185,11 +171,6 @@ optimizer_adam.setup(model)
 optimizer_sgd = optimizers.SGD()
 optimizer_sgd.setup(model)
 
-'''
-___QUESTION-1-DESCRIBE-F-START___
-
-- Describe what the following lines of code do
-'''
 optimizer_adam.add_hook(chainer.optimizer.GradientClipping(threshold=5))
 optimizer_sgd.add_hook(chainer.optimizer.GradientClipping(threshold=5))
 '''___QUESTION-1-DESCRIBE-F-END___'''
