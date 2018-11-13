@@ -45,11 +45,7 @@ class EncoderDecoder(Chain):
         self.add_link("embed_enc", L.EmbedID(vsize_enc, n_units))
 
         '''
-        ___QUESTION-1-DESCRIBE-A-START___
-
-        - Explain the following lines of code
-        - Think about what add_link() does and how can we access Links added in Chainer.
-        - Why are there two loops or adding links?
+       
         '''
         self.lstm_enc = ["L{0:d}_enc".format(i) for i in range(nlayers_enc)]
         for lstm_name in self.lstm_enc:
@@ -262,12 +258,9 @@ class EncoderDecoder(Chain):
 
             pred_word = self.select_word(prob, train=train, sample=False)
             '''
-            ___QUESTION-1-DESCRIBE-E-START___
-            Explain what loss is computed with an example
-            What does this value mean?
+            
             '''
             self.loss += F.softmax_cross_entropy(predicted_out, next_word_var)
-            '''___QUESTION-1-DESCRIBE-E-END___'''
 
         report({"loss":self.loss},self)
 
